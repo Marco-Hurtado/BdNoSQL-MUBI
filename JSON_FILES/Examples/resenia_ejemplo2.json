@@ -1,0 +1,26 @@
+{"fechas": [
+        {"fecha": "2024/01/05", 
+        "directores": [{
+            "nombre": "Villanueva", "peliculas": [
+                {"titulo": "Blade Runner", 
+                "duracion": 120,
+                "productora": "20CentFox",
+                "genero": "Ciencia ficción",
+                "anio": 2017,
+                "descripcion": "Disparos y mi novia Ana de Armas te amo bb",
+                "clasificacion": "R",
+                "reseñas": [
+                    {"id_usuario": 123456,
+                    "clasificacion": 9,
+                    "comentario": "Estuvo buena"}
+                ]},
+                {"titulo": "Dune", 
+                "duracion": "..."
+                }
+                ]
+            }]
+        },
+        {"fecha": "2024/01/06",
+        "directores": ["..."]}
+    ]
+}

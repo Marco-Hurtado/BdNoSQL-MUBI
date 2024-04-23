@@ -1,0 +1,21 @@
+{ "fecha":"3-abr-24",
+   "peliculas": [ { "titulo":"Dark Night Rises",
+                      "director":"nolan",
+                      "genero":"suspenso",
+                      "productora":"Warner brothers",
+                      "reseñas": [ { "id_usuario": 132659,
+                                          "calif": 10,
+                                          "comentario":"me encantó" },
+                        { "id_usuario": 4986321, "calif":9, "comentario": "le faltó a Nolan un poco" },
+{ "id_usuario": 98456, "calif":5, "comentario": "está muy chafa" }] },
+                { "titulo":"Pulp Fiction", "director":"john Travolta", "productora":"20th century",
+               "reseñas": [
+      {  "id_usuario": 132659, "calif":9, "comentario":"está chida"},
+      { "id_usuario": 985632, "calif":10, "comentario":"buenísima"},
+      { "id_usuario": 98456, "calif":6, "comentario":"he visto mejores"} ],
+….
+   { "titulo":"Interestelar", ….. } ] 
+},
+{ "fecha":"5-abr-24",
+   ….
+}

@@ -1,14 +1,12 @@
 {
     "Usuarios":[
-        {   
-            "id_usuario": 1231,
+        {
             "nombre_usuario": "Marco Hurtado",
             "email":"hurtadomarco961@gmail.com",
             "fecha_nacimiento":"18-07-2000",
             "genero":"H"
         },
         {
-            "id_usuario": 1232,
             "nombre_usuario": "Saul Sevilla",
             "email":"sevillasaul@gmail.com",
             "fecha_nacimiento":"16-12-2003",

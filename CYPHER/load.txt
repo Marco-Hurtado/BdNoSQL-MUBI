@@ -63,7 +63,5 @@ CREATE (:Actores {
   ID_ACTOR: toInteger(row.id_actor)
 });
 
-// Relación Pelicula - Productora
-MATCH (p:Pelicula {ID_PRODUCTORA: p.ID_PRODUCTORA})
-MATCH (pr:Productora {ID_PRODUCTORA: pr.ID_PRODUCTORA})
-CREATE (p)-[:PRODUCIDA_POR]->(pr);
+
+

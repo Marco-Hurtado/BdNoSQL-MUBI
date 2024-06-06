@@ -9,3 +9,10 @@ Google Drive:
 
 * Se tiene que pedir acceso al drive para edición
 * El Drive es solo para archivos **csv**, **json** y **colab notebooks**.
+Carga de json's a mongo db
+en el caso de resenias fue en dos partes
+![alt text](image.png)
+![alt text](image-1.png)
+
+visatas
+![alt text](image-2.png)

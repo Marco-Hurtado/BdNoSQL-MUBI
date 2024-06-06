@@ -1,0 +1,59 @@
+CREATE INDEX FOR (a:Actores) ON (a.ID_ACTOR);
+CREATE INDEX FOR (p:Pelicula) ON (p.ID_PELICULA);
+CREATE INDEX FOR (p:Director) ON (p.ID_DIRECTOR);
+CREATE INDEX FOR (p:Genero) ON (p.ID_GENERO);
+CREATE INDEX FOR (p:Usuario) ON (p.ID_USUARIO);
+
+
+// Crear la relación PRODUCIDA_POR entre Pelicula y Productora
+MATCH (p:Pelicula)
+WITH p
+MATCH (prod:Productora {ID_PRODUCTORA: p.ID_PRODUCTORA})
+CREATE (p)-[:PRODUCIDA_POR]->(prod);
+
+// Crear la relación FILMADA_EN entre Pelicula y Pais
+MATCH (p:Pelicula)
+WITH p
+MATCH (pais:Paises {ID_PAIS: p.ID_PAIS})
+CREATE (p)-[:FILMADA_EN]->(pais);
+
+// Crea la relación ACTUO_EN entre Actores y Peliculas utilizando índices
+LOAD CSV WITH HEADERS FROM 'file:///Pelicula_actor.csv' AS row
+MATCH (a:Actores)
+WHERE a.ID_ACTOR = toInteger(row.id_actor)
+MATCH (p:Pelicula)
+WHERE p.ID_PELICULA = toInteger(row.id_pelicula)
+CREATE (a)-[:ACTUO_EN]->(p);
+
+// Crea la relación DIRIGIO entre Actores y Peliculas utilizando índices
+LOAD CSV WITH HEADERS FROM 'file:///Pelicula_director.csv' AS row
+MATCH (a:Director)
+WHERE a.ID_DIRECTOR = toInteger(row.id_director)
+MATCH (p:Pelicula)
+WHERE p.ID_PELICULA = toInteger(row.id_pelicula)
+CREATE (a)-[:DIRIGIO]->(p);
+
+// Crea la relación DEL_GENERO entre Pelicula y Genero utilizando índices
+LOAD CSV WITH HEADERS FROM 'file:///Pelicula_genero.csv' AS row
+MATCH (a:Genero)
+WHERE a.ID_GENERO = toInteger(row.id_genero)
+MATCH (p:Pelicula)
+WHERE p.ID_PELICULA = toInteger(row.id_pelicula)
+CREATE (p)-[:DEL_GENERO]->(a);
+
+//Crear la relación VIO entre Usuario y Pelicula
+LOAD CSV WITH HEADERS FROM 'file:///Vistas.csv' AS row
+MATCH (u:Usuarios)
+WHERE u.ID_USUARIO = toInteger(row.id_usuario)
+MATCH (p:Pelicula)
+WHERE p.ID_PELICULA = toInteger(row.id_pelicula)
+CREATE (u)-[:VIO {fecha: row.fecha}]->(p);
+
+//Crear la relación CRITICO entre Usuario y Pelicula
+LOAD CSV WITH HEADERS FROM 'file:///Resenias.csv' AS row
+MATCH (u:Usuarios)
+WHERE u.ID_USUARIO = toInteger(row.id_usuario)
+MATCH (p:Pelicula)
+WHERE p.ID_PELICULA = toInteger(row.id_pelicula)
+CREATE (u)-[:CRITICO {calificacion: row.calificacion, fecha: row.fecha}]->(p);
+

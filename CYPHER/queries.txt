@@ -1,0 +1,26 @@
+Genero de peliculas mejor calificado por pais
+// Emparejar usuarios, películas, géneros y países, y calcular el promedio de las calificaciones
+MATCH (u:Usuario)-[r:CRITICO]->(p:Pelicula)-[:DEL_GENERO]->(g:Genero)
+MATCH (p)-[:FILMADA_EN]->(pais:Paises)
+WITH pais.PAIS AS pais, g.NOMBRE AS genero_pelicula, AVG(toInteger(r.calificacion)) AS promedio_calificacion
+
+// Recopilar los datos para cada país
+WITH pais, COLLECT({genero_pelicula: genero_pelicula, promedio_calificacion: promedio_calificacion}) AS generos_por_pais
+
+// Encontrar el género con el promedio de calificación más alto por país
+UNWIND generos_por_pais AS genero
+WITH pais, genero.genero_pelicula AS genero_pelicula, genero.promedio_calificacion AS promedio_calificacion
+ORDER BY pais, promedio_calificacion DESC
+
+
+Genero mas visto entre mujeres y hombres
+// Paso 1: Contar las visualizaciones de cada género de película por cada género de usuario
+MATCH (u:Usuario)-[:VIO]->(p:Pelicula)-[:DEL_GENERO]->(g:Genero)
+WITH u.GENERO AS genero_usuario, g.NOMBRE AS genero_pelicula, COUNT(*) AS vistas
+// Paso 2: Encontrar el máximo número de visualizaciones por género de usuario
+WITH genero_usuario, genero_pelicula, vistas
+ORDER BY genero_usuario, vistas DESC
+WITH genero_usuario, COLLECT({genero_pelicula: genero_pelicula, vistas: vistas}) AS peliculas_vistas
+// Paso 3: Filtrar para obtener el género de película más visto por cada género de usuario
+RETURN genero_usuario, peliculas_vistas[0].genero_pelicula AS genero_favorito, peliculas_vistas[0].vistas AS vistas
+ORDER BY genero_usuario;

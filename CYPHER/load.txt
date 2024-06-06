@@ -1,0 +1,69 @@
+// Creación de Productora
+LOAD CSV WITH HEADERS FROM 'file:///Productoras.csv' AS row
+CREATE (:Productora {
+  NOMBRE: row.nombre,
+  ID_PRODUCTORA: toInteger(row.id_productora)
+});
+
+// Creación de Director
+LOAD CSV WITH HEADERS FROM 'file:///Directores.csv' AS row
+CREATE (:Director {
+  NOMBRE: row.nombre,
+  ID_DIRECTOR: toInteger(row.id_director)
+});
+
+LOAD CSV WITH HEADERS FROM 'file:///Generos.csv' AS row
+CREATE (:Genero {
+  NOMBRE: row.nombre,
+  ID_GENERO: toInteger(row.id_genero)
+});
+
+// Creación de Peliculas
+LOAD CSV WITH HEADERS FROM 'file:///Peliculas.csv' AS row
+CREATE (:Pelicula {
+  TITULO: row.titulo,
+  ANIO: toInteger(row.anio),
+  DURACION: toInteger(row.duracion),
+  DESCRIPCION: row.descripcion,
+  ID_PAIS: toInteger(row.id_pais),
+  ID_PRODUCTORA: toInteger(row.id_productora),
+  ID_PELICULA: toInteger(row.id_pelicula)
+});
+
+// Creación de Usuarios
+LOAD CSV WITH HEADERS FROM 'file:///Usuarios.csv' AS row
+CREATE (:Usuario {
+  NOMBRE_USUARIO: row.nombre_usuario,
+  ID_USUARIO: toInteger(row.id_usuario),
+  EMAIL: row.email,
+  FECHA_NACIMIENTO: date(row.fecha_nacimiento),
+  GENERO: row.genero
+});// Creación de Usuarios
+
+LOAD CSV WITH HEADERS FROM 'file:///Usuarios.csv' AS row
+CREATE (:Usuario {
+  NOMBRE_USUARIO: row.nombre_usuario,
+  ID_USUARIO: toInteger(row.id_usuario),
+  EMAIL: row.email,
+  FECHA_NACIMIENTO: date(row.fecha_nacimiento),
+  GENERO: row.genero
+});
+
+//Creacion Paises
+LOAD CSV WITH HEADERS FROM 'file:///Paises.csv' AS row
+CREATE (:Paises {
+  PAIS: row.nombre,
+  ID_PAIS: toInteger(row.id_pais)
+});
+
+//Creacion Actores
+LOAD CSV WITH HEADERS FROM 'file:///Actores.csv' AS row
+CREATE (:Actores {
+  ACTOR: row.nombre,
+  ID_ACTOR: toInteger(row.id_actor)
+});
+
+// Relación Pelicula - Productora
+MATCH (p:Pelicula {ID_PRODUCTORA: p.ID_PRODUCTORA})
+MATCH (pr:Productora {ID_PRODUCTORA: pr.ID_PRODUCTORA})
+CREATE (p)-[:PRODUCIDA_POR]->(pr);

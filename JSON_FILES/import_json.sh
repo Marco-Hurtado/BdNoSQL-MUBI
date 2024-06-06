@@ -8,12 +8,12 @@ db_name="MUBI"
 collection_name="resenias"
 
 # Directorio donde se encuentran los archivos JSON (asegúrate de ajustarlo a tu estructura de directorios)
-json_dir="/home/misa/Documentos/CienciDeDatos/6TO SEMESTRE/BD_noSQL/BdNoSQL-MUBI/JSON_FILES/resenias/"
+json_dir="/home/misa/Documentos/CienciDeDatos/6TO SEMESTRE/BD_noSQL/BdNoSQL-MUBI/JSON_FILES/countries/"
 
 # Iterar sobre los archivos del 01 al 20
-for i in {0000..0145}; do
+for i in {0001..0146}; do
     # Nombre del archivo JSON
-    json_file="resenias${i}.json"
+    json_file="pais${i}.json"
 
     # Ruta completa al archivo JSON
     file_path="${json_dir}${json_file}"

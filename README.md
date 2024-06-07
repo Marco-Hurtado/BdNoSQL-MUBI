@@ -8,7 +8,7 @@ Diagrama Entidad Relación Relacional:
 Google Drive:
 [Drive](https://drive.google.com/drive/folders/1ufDXsd4-4lmpKyHwCV4Bd8sc1aIvHhlg?usp=sharing)
 
-Documento explicación:
+Documento:
 [Docs](https://docs.google.com/document/d/1psPfG1zFRgp96hqkdpYyQ1r_47fGdhX69Qtyb2_BDgQ/edit?usp=sharing)
 
 * Se tiene que pedir acceso al drive para edición
